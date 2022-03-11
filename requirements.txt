@@ -1,4 +1,7 @@
 django
+django-extensions
+ipython
+faker
 
 #flake8
 flake8
