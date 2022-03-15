@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+    <table>
+        <tr>
+            <th scope="col"> Id </th>
+            <th scope="col"> Email_from </th>
+            <th scope="col"> Subject </th>
+            <th scope="col"> Message </th>
+        </tr>
+
+        {% for cont in contacts %}
+
+        <tr>
+            <td> {{ cont.id }} </td>
+            <td> {{cont.email_from}} </td>
+            <td> {{cont.subject}} </td>
+            <td> {{cont.message}} </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+<hr>
+{% endblock content %}

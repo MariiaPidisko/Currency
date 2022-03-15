@@ -1,10 +1,13 @@
 from currency.models import ContactUs
 
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def cont_list(request):
-    contact = []
-    for cont in ContactUs.objects.all():
-        contact.append([cont.id, cont.email_from, cont.subject, cont.message])
-    return HttpResponse(str(contact))
+    contacts = ContactUs.objects.all()
+    return render(request, 'cont_list.html', context={'contacts': contacts})
+
+
+def index(request):
+    return render(request, 'index.html')
