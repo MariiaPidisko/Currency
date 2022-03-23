@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/source/create/">Create Source</a>
+<hr>
+    <table>
+        <tr>
+            <th scope="col"> Id </th>
+            <th scope="col"> Source URL </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Contact Number </th>
+        </tr>
+
+        {% for source in sources %}
+
+        <tr>
+            <td> {{ source.id }} </td>
+            <td> {{ source.source_url }} </td>
+            <td> {{ source.name }} </td>
+            <td> {{ source.contact_number }} </td>
+            <td><a href="/source/update/{{ source.id }}">Edit</a></td>
+            <td><a href="/source/delete/{{ source.id }}">Delete</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+<hr>
+{% endblock content %}
