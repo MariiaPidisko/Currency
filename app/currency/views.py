@@ -3,59 +3,40 @@ from currency.models import ContactUs
 from currency.models import Rate
 from currency.models import Source
 
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 
-def rate_list(request):
-    rates = Rate.objects.all()
-    return render(request, 'rate_list.html', context={'rates': rates})
+class RateList(ListView):
+    queryset = Rate.objects.all()
+    template_name = 'rate_list.html'
 
 
-def cont_list(request):
-    contacts = ContactUs.objects.all()
-    return render(request, 'cont_list.html', context={'contacts': contacts})
+class ContactList(ListView):
+    queryset = ContactUs.objects.all()
+    template_name = 'cont_list.html'
 
 
-def source_list(request):
-    sources = Source.objects.all()
-    return render(request, 'source_list.html', context={'sources': sources})
+class SourceList(ListView):
+    queryset = Source.objects.all()
+    template_name = 'source_list.html'
 
 
-def source_create(request):
-    if request.method == 'POST':
-        form = SourceForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/source/list')
-    else:
-        form = SourceForm()
-
-    return render(request, 'source_create.html', context={'form': form})
+class SourceCreate(CreateView):
+    model = Source
+    template_name = 'source_create.html'
+    form_class = SourceForm
+    success_url = reverse_lazy('currency:source_list')
 
 
-def source_update(request, pk):
-    instance = get_object_or_404(Source, pk=pk)
-
-    if request.method == 'POST':
-        form = SourceForm(request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/source/list')
-    else:
-        form = SourceForm(instance=instance)
-
-    return render(request, 'source_update.html', context={'form': form})
+class SourceUpdate(UpdateView):
+    model = Source
+    template_name = 'source_update.html'
+    form_class = SourceForm
+    success_url = reverse_lazy('currency:source_list')
 
 
-def source_delete(request, pk):
-    instance = get_object_or_404(Source, pk=pk)
-    if request.method == 'POST':
-        instance.delete()
-        return HttpResponseRedirect('/source/list')
-    else:
-        return render(request, 'source_delete.html', context={'source': instance})
-
-
-def index(request):
-    return render(request, 'index.html')
+class SourceDelete(DeleteView):
+    queryset = Source.objects.all()
+    template_name = 'source_delete.html'
+    success_url = reverse_lazy('currency:source_list')
