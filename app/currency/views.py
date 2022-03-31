@@ -1,18 +1,42 @@
+from currency.forms import SourceForm
 from currency.models import ContactUs
 from currency.models import Rate
+from currency.models import Source
 
-from django.shortcuts import render
-
-
-def rate_list(request):
-    rates = Rate.objects.all()
-    return render(request, 'rate_list.html', context={'rates': rates})
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 
-def cont_list(request):
-    contacts = ContactUs.objects.all()
-    return render(request, 'cont_list.html', context={'contacts': contacts})
+class RateList(ListView):
+    queryset = Rate.objects.all()
+    template_name = 'rate_list.html'
 
 
-def index(request):
-    return render(request, 'index.html')
+class ContactList(ListView):
+    queryset = ContactUs.objects.all()
+    template_name = 'cont_list.html'
+
+
+class SourceList(ListView):
+    queryset = Source.objects.all()
+    template_name = 'source_list.html'
+
+
+class SourceCreate(CreateView):
+    model = Source
+    template_name = 'source_create.html'
+    form_class = SourceForm
+    success_url = reverse_lazy('currency:source_list')
+
+
+class SourceUpdate(UpdateView):
+    model = Source
+    template_name = 'source_update.html'
+    form_class = SourceForm
+    success_url = reverse_lazy('currency:source_list')
+
+
+class SourceDelete(DeleteView):
+    queryset = Source.objects.all()
+    template_name = 'source_delete.html'
+    success_url = reverse_lazy('currency:source_list')

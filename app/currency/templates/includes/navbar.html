@@ -1,5 +1,6 @@
 <nav>
-    <a href="/">Home</a>
-    <a href="/rate/list/">Rates</a>
-    <a href="/cont/list/">Contact List</a>
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'currency:rate_list' %}">Rate</a>
+    <a href="{% url 'currency:contact_list'%}">Contact List</a>
+    <a href="{% url 'currency:source_list' %}">Source</a>
 </nav>
