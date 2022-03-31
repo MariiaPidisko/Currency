@@ -129,7 +129,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if DEBUG:
-    import os
     import socket
 
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())

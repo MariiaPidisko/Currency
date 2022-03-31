@@ -1,4 +1,5 @@
 from currency import views as currency_views
+
 from django.urls import path
 
 app_name = 'currency'

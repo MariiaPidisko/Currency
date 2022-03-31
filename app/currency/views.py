@@ -4,7 +4,7 @@ from currency.models import Rate
 from currency.models import Source
 
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 
 class RateList(ListView):
