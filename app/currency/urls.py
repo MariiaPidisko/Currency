@@ -8,6 +8,7 @@ urlpatterns = [
     path('rate/list/', currency_views.RateList.as_view(), name='rate_list'),
 
     path('contact/list/', currency_views.ContactList.as_view(), name='contact_list'),
+    path('contact-us/create/', currency_views.ContactUsCreate.as_view(), name='contactus_create'),
 
     path('source/list/', currency_views.SourceList.as_view(), name='source_list'),
     path('source/create/', currency_views.SourceCreate.as_view(), name='source_create'),
