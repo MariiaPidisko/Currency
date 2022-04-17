@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
 
+    'accounts',
     'currency',
 ]
 
@@ -141,7 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_USE_TLS = True
 # EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'veselovamariia88@gmail.com'
+EMAIL_HOST_USER = 'veselovamariia88@gmail.com'
 # EMAIL_HOST_PASSWORD = 'veselma123'
 
 if DEBUG:
@@ -151,3 +152,9 @@ if DEBUG:
     INTERNAL_IPS = [ip[:1] + '1' for ip in ips] + ['127.0.0.1', '10.0.2.2']
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
+AUTH_USER_MODEL = 'accounts.User'
+
+
+# Custom settings
+DOMAIN = 'localhost:8000'
+HTTP_SCHEMA = 'http'
