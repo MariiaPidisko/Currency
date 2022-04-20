@@ -1,12 +1,11 @@
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, RedirectView, UpdateView
+from accounts.forms import SignUpForm
+from accounts.models import User
+
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-
-from accounts.models import User
-
-from accounts.forms import SignUpForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, RedirectView, UpdateView
 
 
 class MyProfile(LoginRequiredMixin, UpdateView):

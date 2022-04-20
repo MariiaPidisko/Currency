@@ -15,4 +15,3 @@ class User(AbstractUser):
             self.username = str(uuid.uuid4())
 
         super().save(*args, **kwargs)
-

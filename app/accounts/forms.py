@@ -1,8 +1,9 @@
+from accounts.models import User
+
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
 from django.urls import reverse
-from accounts.models import User
 
 
 class SignUpForm(forms.ModelForm):
