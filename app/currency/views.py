@@ -4,7 +4,7 @@ from currency.models import Rate
 from currency.models import Source
 
 from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
@@ -64,7 +64,7 @@ class SourceCreate(CreateView):
     success_url = reverse_lazy('currency:source_list')
 
 
-class SourceUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class SourceUpdate(UserPassesTestMixin, UpdateView):
     model = Source
     template_name = 'source_update.html'
     form_class = SourceForm
@@ -74,7 +74,7 @@ class SourceUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user.is_superuser
 
 
-class SourceDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class SourceDelete(UserPassesTestMixin, DeleteView):
     queryset = Source.objects.all()
     template_name = 'source_delete.html'
     success_url = reverse_lazy('currency:source_list')
