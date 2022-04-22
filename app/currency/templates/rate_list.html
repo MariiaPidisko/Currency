@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'currency:rate_create' %}">Create Rate</a>
 <hr>
     <table>
         <tr>
@@ -20,7 +21,9 @@
             <td> {{ rate.type }} </td>
             <td> {{ rate.buy }} </td>
             <td> {{ rate.sale }} </td>
-            <td> {{ rate.created }} </td>
+            <td> {{ rate.created|date:"Y-m-d" }} </td>
+            <td><a href="{% url 'currency:rate_update' rate.id %}">Edit</a></td>
+            <td><a href="{% url 'currency:rate_delete' rate.id %}">Delete</a></td>
         </tr>
 
         {% endfor %}
