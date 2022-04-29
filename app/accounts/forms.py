@@ -16,6 +16,7 @@ class SignUpForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+
         if cleaned_data['password1'] != cleaned_data['password2']:
             raise forms.ValidationError('Passwords should match!')
 

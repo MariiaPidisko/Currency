@@ -1,4 +1,4 @@
-from currency.forms import SourceForm
+from currency.forms import RateForm, SourceForm
 from currency.models import ContactUs
 from currency.models import Rate
 from currency.models import Source
@@ -13,6 +13,32 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 class RateList(ListView):
     queryset = Rate.objects.all()
     template_name = 'rate_list.html'
+
+
+class RateCreate(CreateView):
+    model = Rate
+    template_name = 'rate_create.html'
+    form_class = RateForm
+    success_url = reverse_lazy('currency:rate_list')
+
+
+class RateUpdate(UserPassesTestMixin, UpdateView):
+    model = Rate
+    template_name = 'rate_update.html'
+    form_class = RateForm
+    success_url = reverse_lazy('currency:rate_list')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class RateDelete(UserPassesTestMixin, DeleteView):
+    queryset = Rate.objects.all()
+    template_name = 'rate_delete.html'
+    success_url = reverse_lazy('currency:rate_list')
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
 
 class ContactList(ListView):
