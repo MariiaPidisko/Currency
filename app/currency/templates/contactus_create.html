@@ -2,13 +2,15 @@
 
 {% block title %}Contact Us{% endblock title %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
     Contact Us
 
     <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Contact Us</button>
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-secondary">Contact Us</button>
     </form>
 {% endblock content %}
