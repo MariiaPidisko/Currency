@@ -10,3 +10,6 @@ shell:
 
 run:
 	$(manage_py) runserver
+
+env:
+	. env/bin/activate

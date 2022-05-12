@@ -1,33 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="{% url 'currency:rate_create' %}">Create Rate</a>
-<hr>
-    <table>
-        <tr>
-            <th scope="col"> Id </th>
-            <th scope="col"> Source </th>
-            <th scope="col"> Type </th>
-            <th scope="col"> Buy </th>
-            <th scope="col"> Sale </th>
-            <th scope="col"> Created </th>
-        </tr>
+    <a href="{% url 'currency:rate_create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Rate</a>
 
-        {% for rate in rate_list %}
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"> Id</th>
+                <th scope="col"> Source</th>
+                <th scope="col"> Type</th>
+                <th scope="col"> Buy</th>
+                <th scope="col"> Sale</th>
+                <th scope="col"> Created</th>
+                <th scope="col"> Actions</th>
+            </tr>
+            </thead>
 
-        <tr>
-            <td> {{ rate.id }} </td>
-            <td> {{ rate.source.name }} </td>
-            <td> {{ rate.get_type_display }} </td>
-            <td> {{ rate.buy }} </td>
-            <td> {{ rate.sale }} </td>
-            <td> {{ rate.created|date:"Y-m-d" }} </td>
-            <td><a href="{% url 'currency:rate_update' rate.id %}">Edit</a></td>
-            <td><a href="{% url 'currency:rate_delete' rate.id %}">Delete</a></td>
-        </tr>
+            <tbody>
 
-        {% endfor %}
+            {% for rate in rate_list %}
 
-    </table>
-<hr>
+            <tr>
+                <td> {{ rate.id }}</td>
+                <td> {{ rate.source.name }}</td>
+                <td> {{ rate.get_type_display }}</td>
+                <td> {{ rate.buy }}</td>
+                <td> {{ rate.sale }}</td>
+                <td> {{ rate.created|date:"Y-m-d" }}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{% url 'currency:rate_update' rate.id %}">Edit</a>
+                            <a class="dropdown-item" href="{% url 'currency:rate_delete' rate.id %}">Delete</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock content %}
