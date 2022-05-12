@@ -1,29 +1,50 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-    <a href="{% url 'currency:source_create' %}">Create Source</a>
-<hr>
-    <table>
-        <tr>
-            <th scope="col"> Id </th>
-            <th scope="col"> Source URL </th>
-            <th scope="col"> Name </th>
-            <th scope="col"> Contact Number </th>
-        </tr>
+<a href="{% url 'currency:source_create' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Create
+    Source</a>
 
-        {% for source in source_list %}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col"> Id</th>
+        <th scope="col"> &nbsp;</th>
+        <th scope="col"> Source URL</th>
+        <th scope="col"> Name</th>
+        <th scope="col"> Contact Number</th>
+    </tr>
+    </thead>
 
-        <tr>
-            <td> {{ source.id }} </td>
-            <td> {{ source.source_url }} </td>
-            <td> {{ source.name }} </td>
-            <td> {{ source.contact_number }} </td>
-            <td><a href="{% url 'currency:source_update' source.id %}">Edit</a></td>
-            <td><a href="{% url 'currency:source_delete' source.id %}">Delete</a></td>
-        </tr>
+    {% for source in source_list %}
 
-        {% endfor %}
+    <tr>
+        <td> {{ source.id }}</td>
+        {% if source.id == 1 %}
+        <td><img src="{% static  'img/privat.png' %}" width="20" height="20" class="rounded"></td>
+        {% elif source.id == 2 %}
+        <td><img src="{% static  'img/mono.jpeg' %}" width="20" height="20" class="rounded"></td>
+        {% endif %}
+        <td> {{ source.source_url }}</td>
+        <td> {{ source.name }}</td>
+        <td> {{ source.contact_number }}</td>
+        <td>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                        id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'currency:source_update' source.id %}">Edit</a>
+                    <a class="dropdown-item" href="{% url 'currency:source_delete' source.id %}">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
 
-    </table>
-<hr>
+    {% endfor %}
+
+</table>
+
 {% endblock content %}
