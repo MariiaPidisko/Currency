@@ -7,7 +7,7 @@ from django.urls import reverse
 
 @shared_task
 def debug():
-    print('Hello From Celery Task')
+    pass
 
 
 @shared_task
