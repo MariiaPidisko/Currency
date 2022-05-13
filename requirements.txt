@@ -3,6 +3,7 @@ django-debug-toolbar
 django-extensions
 ipython
 faker
+celery
 
 #flake8
 flake8
