@@ -11,7 +11,7 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 
 class RateList(ListView):
-    queryset = Rate.objects.all().order_by('-id').select_related('source')
+    queryset = Rate.objects.all().select_related('source')
     template_name = 'rate_list.html'
 
 

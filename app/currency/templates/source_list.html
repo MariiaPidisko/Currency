@@ -9,11 +9,11 @@
 <table class="table">
     <thead class="thead-dark">
     <tr>
-        <th scope="col"> Id</th>
-        <th scope="col"> &nbsp;</th>
-        <th scope="col"> Source URL</th>
-        <th scope="col"> Name</th>
-        <th scope="col"> Contact Number</th>
+        <th scope="col"> Id </th>
+        <th scope="col"> &nbsp; </th>
+        <th scope="col"> Source URL </th>
+        <th scope="col"> Name </th>
+        <th scope="col"> Contact Number </th>
     </tr>
     </thead>
 
@@ -21,11 +21,13 @@
 
     <tr>
         <td> {{ source.id }}</td>
-        {% if source.id == 1 %}
-        <td><img src="{% static  'img/privat.png' %}" width="20" height="20" class="rounded"></td>
-        {% elif source.id == 2 %}
-        <td><img src="{% static  'img/mono.jpeg' %}" width="20" height="20" class="rounded"></td>
+        <td>
+        {% if source.logo %}
+            <img src="{{ source.logo.url }}" width="30" height="30">
+        {% else %}
+            <img src="{% static  'img/logo-placeholder.jpg' %}" width="40" height="40">
         {% endif %}
+        </td>
         <td> {{ source.source_url }}</td>
         <td> {{ source.name }}</td>
         <td> {{ source.contact_number }}</td>
