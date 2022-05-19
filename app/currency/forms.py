@@ -12,4 +12,4 @@ class RateForm(forms.ModelForm):
 class SourceForm(forms.ModelForm):
     class Meta:
         model = Source
-        fields = ('source_url', 'name', 'contact_number')
+        fields = ('logo', 'source_url', 'name', 'contact_number')

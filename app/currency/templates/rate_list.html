@@ -8,13 +8,13 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col"> Id</th>
-                <th scope="col"> Source</th>
-                <th scope="col"> Type</th>
-                <th scope="col"> Buy</th>
-                <th scope="col"> Sale</th>
-                <th scope="col"> Created</th>
-                <th scope="col"> Actions</th>
+                <th scope="col"> Id </th>
+                <th scope="col"> Source </th>
+                <th scope="col"> Type </th>
+                <th scope="col"> Buy </th>
+                <th scope="col"> Sale </th>
+                <th scope="col"> Created </th>
+                <th scope="col"> Actions </th>
             </tr>
             </thead>
 
@@ -23,6 +23,7 @@
             {% for rate in rate_list %}
 
             <tr>
+
                 <td> {{ rate.id }}</td>
                 <td> {{ rate.source.name }}</td>
                 <td> {{ rate.get_type_display }}</td>
