@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
     <a href="{% url 'currency:rate_create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Rate</a>
 
@@ -9,6 +11,7 @@
             <thead>
             <tr>
                 <th scope="col"> Id </th>
+                <th scope="col"> &nbsp; </th>
                 <th scope="col"> Source </th>
                 <th scope="col"> Type </th>
                 <th scope="col"> Buy </th>
@@ -25,6 +28,13 @@
             <tr>
 
                 <td> {{ rate.id }}</td>
+                <td>
+                    {% if rate.source.logo %}
+                        <img src="{{ rate.source.logo.url }}" width="30" height="30">
+                    {% else %}
+                        <img src="{% static  'img/logo-placeholder.jpg' %}" width="40" height="40">
+                    {% endif %}
+                </td>
                 <td> {{ rate.source.name }}</td>
                 <td> {{ rate.get_type_display }}</td>
                 <td> {{ rate.buy }}</td>
