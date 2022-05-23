@@ -10,14 +10,15 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col"> Id </th>
+                <th scope="col"> Id</th>
                 <th scope="col"> &nbsp; </th>
-                <th scope="col"> Source </th>
-                <th scope="col"> Type </th>
-                <th scope="col"> Buy </th>
-                <th scope="col"> Sale </th>
-                <th scope="col"> Created </th>
-                <th scope="col"> Actions </th>
+                <th scope="col"> Source</th>
+                <th scope="col"> Base Currency </th>
+                <th scope="col"> Type</th>
+                <th scope="col"> Buy</th>
+                <th scope="col"> Sale</th>
+                <th scope="col"> Created</th>
+                <th scope="col"> Actions</th>
             </tr>
             </thead>
 
@@ -36,6 +37,7 @@
                     {% endif %}
                 </td>
                 <td> {{ rate.source.name }}</td>
+                <td> {{ rate.get_base_type_display }}</td>
                 <td> {{ rate.get_type_display }}</td>
                 <td> {{ rate.buy }}</td>
                 <td> {{ rate.sale }}</td>

@@ -175,8 +175,8 @@ MEDIA_URL = '/media/'
 
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_BEAT_SCHEDULE = {
-    'debug': {
-        'task': 'accounts.tasks.debug',
+    'parse_privatbank': {
+        'task': 'currency.tasks.parse_privatbank',
         'schedule': crontab(minute='*/1'),
     },
 }
