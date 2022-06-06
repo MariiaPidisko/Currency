@@ -27,7 +27,7 @@ class Source(models.Model):
     source_url = models.URLField(max_length=100)
     name = models.CharField(max_length=50, unique=True)
     code_name = models.PositiveSmallIntegerField(choices=mch.SourceCodeName.choices, unique=True)
-    contact_number = models.DecimalField(max_digits=25, decimal_places=0)
+    contact_number = models.CharField(max_length=25)
 
     logo = models.FileField(upload_to=upload_logo, default=None, null=True, blank=True)
 

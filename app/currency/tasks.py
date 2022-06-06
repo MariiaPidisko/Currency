@@ -17,7 +17,7 @@ def parse_privatbank():
 
     from currency.models import Rate, Source
 
-    url = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
+    url = 'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11'
     response = requests.get(url)
     response.raise_for_status()
     rates = response.json()
@@ -28,14 +28,11 @@ def parse_privatbank():
         'UAH': mch.RateType.UAH,
     }
 
-    source, created = Source.objects.get_or_create(source_url='https://privatbank.ua',
-                                                   code_name=mch.SourceCodeName.PRIVATBANK,
-                                                   contact_number='3700')[0]
+    source = Source.objects.get_or_create(code_name=mch.SourceCodeName.PRIVATBANK)[0]
 
     for rate in rates:
         currency_type = available_currencies.get(rate['ccy'])
         if not currency_type:
-            breakpoint()
             continue
 
         base_currency_type = available_currencies.get(rate['base_ccy'])
