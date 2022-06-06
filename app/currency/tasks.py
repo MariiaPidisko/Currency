@@ -1,8 +1,8 @@
+from decimal import Decimal
+
 from celery import shared_task
 
 from currency import model_choices as mch
-
-from decimal import Decimal
 
 import requests
 
