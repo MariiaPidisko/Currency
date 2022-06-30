@@ -11,6 +11,10 @@ class RateType(models.TextChoices):
 class SourceCodeName(models.IntegerChoices):
     PRIVATBANK = 1, 'PrivatBank'
     MONOBANK = 2, 'MonoBank'
+    VKURSE = 3, 'Vkurse'
+    CREDIT_AGRICOLE = 4, 'Credit_Agricole'
+    UKRSIBBANK = 5, 'UkrsibBank'
+    KREDITDNEPR = 6, 'KreditDnepr'
 
 
 # class SourceCodeName(models.IntegerChoices):
