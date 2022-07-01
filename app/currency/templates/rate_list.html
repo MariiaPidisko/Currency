@@ -5,6 +5,13 @@
 {% block content %}
     <a href="{% url 'currency:rate_create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Rate</a>
 
+     <form method="get">
+        {{ filter.form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span> Apply Filters
+        </button>
+    </form>
+
 <div class="row">
     <div class="col">
         <table class="table table-striped">

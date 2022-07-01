@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'debug_toolbar',
+    'django_filters',
 
     'crispy_forms',
 
@@ -177,6 +178,26 @@ CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_BEAT_SCHEDULE = {
     'parse_privatbank': {
         'task': 'currency.tasks.parse_privatbank',
+        'schedule': crontab(minute='*/1'),
+    },
+    'parse_monobank': {
+        'task': 'currency.tasks.parse_monobank',
+        'schedule': crontab(minute='*/1'),
+    },
+    'parse_vkurse': {
+        'task': 'currency.tasks.parse_vkurse',
+        'schedule': crontab(minute='*/1'),
+    },
+    'parse_credit_agricole': {
+        'task': 'currency.tasks.parse_credit_agricole',
+        'schedule': crontab(minute='*/1'),
+    },
+    'parse_ukrsibbank': {
+        'task': 'currency.tasks.parse_ukrsibbank',
+        'schedule': crontab(minute='*/1'),
+    },
+    'parse_creditdnepr': {
+        'task': 'currency.tasks.parse_creditdnepr',
         'schedule': crontab(minute='*/1'),
     },
 }
