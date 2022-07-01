@@ -14,6 +14,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     email = models.EmailField('email_address', unique=True)
+    phone_number = models.CharField(max_length=20, null=True, unique=True)
     avatar = models.FileField(upload_to=upload_avatar, default=None, null=True, blank=True)
 
     def save(self, *args, **kwargs):

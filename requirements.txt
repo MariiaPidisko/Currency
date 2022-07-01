@@ -2,6 +2,7 @@ django
 faker
 celery
 requests
+django-filter
 
 #dev
 django-debug-toolbar
