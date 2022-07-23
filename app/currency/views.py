@@ -124,3 +124,19 @@ class SourceDelete(UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+# class RateListAPIExample(View):
+#     def get(self, request):
+#         import json
+#         rates = Rate.objects.all()
+#         rates_response = []
+#         for rate in rates:
+#             obj_dict = {
+#                 'id': rate.id,
+#                 'buy': str(rate.buy),
+#                 'sale': str(rate.sale),
+#             }
+#             rates_response.append(obj_dict)
+#
+#         return HttpResponse(json.dumps(rates_response), content_type='application/json')
