@@ -26,6 +26,7 @@ schema_view = get_schema_view(
 
 router = DefaultRouter()
 router.register('rates', views.RateViewSet, basename='rate')
+router.register('source', views.SourceViewSet, basename='source')
 
 urlpatterns = [
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -33,6 +34,8 @@ urlpatterns = [
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # path('rates/', views.RateView.as_view(), name='rates'),
     # path('rates/<int:pk>/', views.RateDetailView.as_view(), name='rates-detail'),
+
+    # path('source/', views.SourceView.as_view(), name='source'),
 ]
 
 urlpatterns += router.urls
